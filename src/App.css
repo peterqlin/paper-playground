@@ -3,3 +3,14 @@
   height: 100vh;
   position: relative;
 }
+
+.react-flow__node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 4px;
+}

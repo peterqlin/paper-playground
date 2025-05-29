@@ -9,8 +9,6 @@ const Hotbar = (props) => {
     // * prevent text from being selected while dragging
     downEvent.preventDefault();
 
-    document.body.style.cursor = 'grab';
-
     const onMouseMove = (moveEvent) => {
       setClicked(true);
       setPosition({ x: moveEvent.clientX, y: moveEvent.clientY });
@@ -18,7 +16,7 @@ const Hotbar = (props) => {
 
     const onMouseUp = (upEvent) => {
       setClicked(false);
-      const newNode = { id: props.nodes[props.nodes.length - 1].id + 1, position: { x: upEvent.clientX, y: upEvent.clientY }, data: { label: `${item.name} node` } };
+      const newNode = { id: props.nodes[props.nodes.length - 1].id + 1, position: { x: upEvent.clientX - 50, y: upEvent.clientY - 50 }, data: { label: `${item.name} node` } };
       props.setNodes([...props.nodes, newNode]);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
@@ -45,21 +43,12 @@ const Hotbar = (props) => {
       </div>
       {clicked && (
         <div
+          className="hotbar-clicked"
           style={{
-            position: 'fixed',
             left: `${position.x}px`,
             top: `${position.y}px`,
-            transform: 'translate(-50%,-50%)',
-            zIndex: 11,
-            padding: '10px 15px',
-            backgroundColor: '#555',
-            color: 'white',
-            borderRadius: '4px'
           }}
-        // className="hotbar-clicked"
-        >
-          bruh
-        </div>
+        />
       )}
     </>
   );
