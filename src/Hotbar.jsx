@@ -11,8 +11,14 @@ const Hotbar = (props) => {
   return (
     <div className="hotbar-container">
       <div className="hotbar">
+        <div className="hotbar-item" onDragStart={(e) => onDragStart(e, 'shape')} draggable>
+          Shape
+        </div>
         <div className="hotbar-item" onDragStart={(e) => onDragStart(e, 'paper')} draggable>
-          PaperNode
+          Raster
+        </div>
+        <div className="hotbar-item" onDragStart={(e) => onDragStart(e, 'paper')} draggable>
+          Group
         </div>
       </div>
     </div>

@@ -12,17 +12,17 @@ import '@xyflow/react/dist/base.css';
 import './App.css';
 
 import Hotbar from './Hotbar';
-import PaperNode from './PaperNode';
+import ShapeNode from './ShapeNode';
 import { DragDropProvider, useDragDrop } from './DragDropContext';
 
 const nodeWidth = 200;
 const nodeHeight = 200;
 
 const initialNodes = [
-  { id: '1', type: 'paper', position: { x: 0, y: 0 }, data: { id: 1 } },
+  { id: '1', type: 'shape', position: { x: 0, y: 0 }, shapeData: { shape: 'circle' } },
 ];
 
-const nodeTypes = { paper: PaperNode };
+const nodeTypes = { shape: ShapeNode };
 
 let id = 0;
 const getId = () => `node-${id++}`;
@@ -37,6 +37,10 @@ function App() {
     (params) => setEdges((eds) => addEdge(params, eds)),
     [setEdges],
   );
+
+  const onDragStart = (e, nodeType) => {
+    setType(nodeType);
+  };
 
   const onDragOver = useCallback((e) => {
     e.preventDefault();
@@ -65,12 +69,8 @@ function App() {
     setNodes((nodes) => [...nodes, newNode]);
   }, [screenToFlowPosition, type]);
 
-  const onDragStart = (e, nodeType) => {
-    setType(nodeType);
-  }
-
   return (
-    <div className="paper-flow">
+    <div className="flow">
       <ReactFlow
         nodes={nodes}
         edges={edges}

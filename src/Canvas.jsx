@@ -8,11 +8,7 @@ const Canvas = (props) => {
   useEffect(() => {
     Paper.setup(canvasRef.current);
     Paper.view.viewSize = new Paper.Size(200, 100);
-    new Paper.Shape.Circle({
-      center: new Paper.Point(Paper.view.viewSize.width / 2, Paper.view.viewSize.height / 2),
-      radius: 25,
-      fillColor: props.paperData.color
-    });
+    // * logic for creating shape/updating shape attributes
   }, [props]);
 
   return <canvas ref={canvasRef} id={`canvas-${props.id}`} className="canvas" />
