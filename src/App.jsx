@@ -1,6 +1,7 @@
 import React, { StrictMode, useCallback, useState } from 'react';
 import { ReactFlow, Background, useNodesState, useEdgesState, addEdge } from '@xyflow/react';
 import Hotbar from './Hotbar';
+import PaperNode from './PaperNode';
 import './App.css';
 
 import '@xyflow/react/dist/base.css';
@@ -8,10 +9,11 @@ import '@xyflow/react/dist/base.css';
 const initialNodes = [
   { id: '1', position: { x: 500, y: 150 }, data: { label: '1' } },
   { id: '2', position: { x: 500, y: 300 }, data: { label: '2' } },
+  { id: '3', type: 'paper', position: { x: 200, y: 200 }, data: { label: 'bruhh' } },
 ];
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
 
-const nodeTypes = {};
+const nodeTypes = { paper: PaperNode };
 
 export default function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -40,7 +42,7 @@ export default function App() {
       >
         <Background variant="dots" gap={12} size={1} />
       </ReactFlow>
-      <Hotbar hotbarItems={hotbarItems} nodes={nodes} setNodes={setNodes} />
+      <Hotbar hotbarItems={hotbarItems} nodes={nodes} setNodes={setNodes} nodeWidth={200} nodeHeight={200} />
     </div>
   );
 }

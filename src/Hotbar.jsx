@@ -16,7 +16,7 @@ const Hotbar = (props) => {
 
     const onMouseUp = (upEvent) => {
       setClicked(false);
-      const newNode = { id: props.nodes[props.nodes.length - 1].id + 1, position: { x: upEvent.clientX - 50, y: upEvent.clientY - 50 }, data: { label: `${item.name} node` } };
+      const newNode = { id: props.nodes[props.nodes.length - 1].id + 1, position: { x: upEvent.clientX - props.nodeWidth / 2, y: upEvent.clientY - props.nodeHeight / 2 }, data: { label: `${item.name} node` } };
       props.setNodes([...props.nodes, newNode]);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
