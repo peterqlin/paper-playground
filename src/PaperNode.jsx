@@ -7,7 +7,7 @@ const PaperNode = ({ data, isConnectable }) => {
   const [paperData, setPaperData] = useState({ color: 'blue' });
 
   return (
-    <div className="paper-node" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div className="paper-node">
       <Handle
         type="target"
         position={Position.Top}
@@ -24,7 +24,7 @@ const PaperNode = ({ data, isConnectable }) => {
         </button>
       </div>
       <div className="node-half">
-        <Canvas paperData={paperData} />
+        <Canvas paperData={paperData} id={data.id} />
       </div>
       <Handle
         type="source"

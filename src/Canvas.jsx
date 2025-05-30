@@ -15,7 +15,7 @@ const Canvas = (props) => {
     });
   }, [props]);
 
-  return <canvas ref={canvasRef} id="canvas" className="canvas" />
+  return <canvas ref={canvasRef} id={`canvas-${props.id}`} className="canvas" />
 };
 
 export default Canvas;
